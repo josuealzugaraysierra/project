@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grand Terra – Departamentos en Miraflores</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ─── NAV ─────────────────────────────────────────── -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#hero" class="brand">
+        <span class="brand-icon">&#9776;</span>
+        <span class="brand-name">GRAND <strong>TERRA</strong></span>
+      </a>
+      <button class="burger" id="burger" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#hero">Inicio</a></li>
+        <li><a href="#proyecto">Proyecto</a></li>
+        <li><a href="#ubicacion">Ubicación</a></li>
+        <li><a href="#testimonios">Testimonios</a></li>
+        <li><a href="#vender" class="nav-cta">Vende tu Propiedad</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ─── HERO ─────────────────────────────────────────── -->
+  <section id="hero">
+    <div class="hero-bg">
+      <div class="hero-overlay"></div>
+      <div class="hero-slider">
+        <div class="slide slide-1 active"></div>
+        <div class="slide slide-2"></div>
+        <div class="slide slide-3"></div>
+      </div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge reveal-up">Departamentos en Miraflores</div>
+      <h1 class="hero-title reveal-up delay-1">GRAND TERRA</h1>
+      <p class="hero-sub reveal-up delay-2">Invierte desde <span class="price">S/ 299,000</span><br/>o adquiere tu depa en preventa</p>
+      <div class="hero-tags reveal-up delay-3">
+        <span class="tag tag-red">&#9889; Últimas Unidades en Preventa</span>
+      </div>
+      <div class="hero-actions reveal-up delay-4">
+        <a href="#contacto" class="btn btn-primary">Solicitar Información</a>
+        <a href="#proyecto" class="btn btn-outline">Ver Proyecto</a>
+      </div>
+      <div class="hero-stats reveal-up delay-5">
+        <div class="stat"><span class="stat-num" data-target="12">0</span><span class="stat-label">Pisos</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num" data-target="48">0</span><span class="stat-label">Unidades</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num" data-target="3">0</span><span class="stat-label">Dormitorios</span></div>
+      </div>
+    </div>
+    <div class="hero-scroll-indicator">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+    <div class="slider-dots">
+      <button class="dot active" data-idx="0"></button>
+      <button class="dot" data-idx="1"></button>
+      <button class="dot" data-idx="2"></button>
+    </div>
+  </section>
+
+  <!-- ─── FEATURES BAR ──────────────────────────────────── -->
+  <section class="features-bar">
+    <div class="features-inner">
+      <div class="feature-item reveal-left">
+        <div class="feat-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        </div>
+        <div>
+          <strong>Ubicación Estratégica</strong>
+          <p>Corazón de Miraflores</p>
+        </div>
+      </div>
+      <div class="feature-item reveal-up delay-1">
+        <div class="feat-icon">
+          <svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+        </div>
+        <div>
+          <strong>Alta Rentabilidad</strong>
+          <p>Retorno asegurado</p>
+        </div>
+      </div>
+      <div class="feature-item reveal-up delay-2">
+        <div class="feat-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 3L2 12h3v9h6v-5h2v5h6v-9h3L12 3zm0 12.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+        </div>
+        <div>
+          <strong>Áreas Modernas</strong>
+          <p>Piscina, gym & más</p>
+        </div>
+      </div>
+      <div class="feature-item reveal-right">
+        <div class="feat-icon">
+          <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg>
+        </div>
+        <div>
+          <strong>Ideal para Inversión</strong>
+          <p>Plusvalía garantizada</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PROYECTO ─────────────────────────────────────── -->
+  <section id="proyecto" class="section-proyecto">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-tag">El proyecto</span>
+        <h2>Vive el Proyecto</h2>
+        <p>Departamentos desde <strong class="price">S/ 299,000</strong></p>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-card reveal-up delay-1">
+          <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&q=80')"></div>
+          <div class="card-overlay">
+            <h3>Dpto. de 1, 2 y 3 Dorms.</h3>
+            <p>Diseños amplios con acabados premium</p>
+            <a href="#contacto" class="btn-card">Ver más</a>
+          </div>
+        </div>
+        <div class="gallery-card reveal-up delay-2">
+          <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&q=80')"></div>
+          <div class="card-overlay">
+            <h3>Amplias Áreas Comunes</h3>
+            <p>Piscina, gym, salón de usos múltiples</p>
+            <a href="#contacto" class="btn-card">Ver más</a>
+          </div>
+        </div>
+        <div class="gallery-card reveal-up delay-3">
+          <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80')"></div>
+          <div class="card-overlay">
+            <h3>Entrega en Preventa</h3>
+            <p>Asegura tu unidad al mejor precio</p>
+            <a href="#contacto" class="btn-card">Ver más</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Typologies -->
+      <div class="typo-grid">
+        <div class="typo-card reveal-left">
+          <div class="typo-num">01</div>
+          <h4>1 Dormitorio</h4>
+          <p>Desde 42 m²</p>
+          <span class="typo-price">S/ 299,000</span>
+        </div>
+        <div class="typo-card reveal-up delay-1">
+          <div class="typo-num">02</div>
+          <h4>2 Dormitorios</h4>
+          <p>Desde 68 m²</p>
+          <span class="typo-price">S/ 420,000</span>
+        </div>
+        <div class="typo-card reveal-right">
+          <div class="typo-num">03</div>
+          <h4>3 Dormitorios</h4>
+          <p>Desde 95 m²</p>
+          <span class="typo-price">S/ 590,000</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── UBICACIÓN ─────────────────────────────────────── -->
+  <section id="ubicacion" class="section-ubicacion">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-tag">Donde vivir</span>
+        <h2>Ubicación Privilegiada en Miraflores</h2>
+      </div>
+      <div class="map-wrap reveal-up delay-1">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15601.04906714858!2d-77.04726!3d-12.11968!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c800005f0001%3A0xdd4a65b84fcaf8ff!2sMiraflores%2C+Lima%2C+Per%C3%BA!5e0!3m2!1ses!2spe!4v1234567890"
+          width="100%" height="420" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade" title="Mapa Grand Terra"></iframe>
+      </div>
+      <div class="ubicacion-features">
+        <div class="ub-feat reveal-left">
+          <div class="ub-icon">
+            <svg viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+          </div>
+          <div>
+            <strong>Cerca de Centros Comerciales</strong>
+            <p>Larcomar, Real Plaza a 5 min</p>
+          </div>
+        </div>
+        <div class="ub-feat reveal-up delay-1">
+          <div class="ub-icon">
+            <svg viewBox="0 0 24 24"><path d="M1.5 8.5v12h3v-5h15v5h3v-12l-3-6H4.5l-3 6zm4.5 2c-.83 0-1.5-.67-1.5-1.5S5.17 7.5 6 7.5 7.5 8.17 7.5 9 6.83 10.5 6 10.5zm12 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+          </div>
+          <div>
+            <strong>Avenidas Principales</strong>
+            <p>Av. Larco y Benavides</p>
+          </div>
+        </div>
+        <div class="ub-feat reveal-right">
+          <div class="ub-icon">
+            <svg viewBox="0 0 24 24"><path d="M17.5 12c0 1.11-.31 2.14-.85 3.01L20 18.46 18.46 20l-3.45-3.35C14.14 17.19 13.11 17.5 12 17.5A5.5 5.5 0 0 1 6.5 12 5.5 5.5 0 0 1 12 6.5 5.5 5.5 0 0 1 17.5 12zM12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
+          </div>
+          <div>
+            <strong>Playas del Pacífico</strong>
+            <p>Malecón a 3 min caminando</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── TESTIMONIOS ───────────────────────────────────── -->
+  <section id="testimonios" class="section-testimonios">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-tag">Opiniones</span>
+        <h2>Confianza y Calidad</h2>
+      </div>
+      <div class="testimonios-wrapper">
+        <div class="testi-visual reveal-left">
+          <div class="testi-img-wrap">
+            <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500&q=80" alt="Inversionistas satisfechos" />
+            <div class="testi-badge">
+              <span class="testi-stars">★★★★★</span>
+              <span>5.0 / 5.0</span>
+            </div>
+          </div>
+        </div>
+        <div class="testi-slider reveal-right">
+          <div class="testi-track" id="testi-track">
+            <div class="testi-slide active">
+              <blockquote>"Una excelente inversión. Atención profesional y un proyecto de primera. ¡Superó todas nuestras expectativas!"</blockquote>
+              <cite>María y José – Inversionistas</cite>
+            </div>
+            <div class="testi-slide">
+              <blockquote>"El proceso de compra fue muy transparente. El equipo de Grand Terra nos guió en cada paso. ¡Totalmente recomendado!"</blockquote>
+              <cite>Carlos R. – Lima, Perú</cite>
+            </div>
+            <div class="testi-slide">
+              <blockquote>"Compré en preventa y ya hay un incremento de valor increíble. La ubicación en Miraflores es inmejorable."</blockquote>
+              <cite>Lucia M. – Inversionista</cite>
+            </div>
+          </div>
+          <div class="testi-controls">
+            <button class="testi-prev" id="testi-prev" aria-label="Anterior">&#8592;</button>
+            <div class="testi-dots">
+              <button class="t-dot active" data-t="0"></button>
+              <button class="t-dot" data-t="1"></button>
+              <button class="t-dot" data-t="2"></button>
+            </div>
+            <button class="testi-next" id="testi-next" aria-label="Siguiente">&#8594;</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CONTACTO ─────────────────────────────────────── -->
+  <section id="contacto" class="section-contacto">
+    <div class="contacto-inner">
+      <div class="contacto-text reveal-left">
+        <span class="section-tag light">Contáctanos</span>
+        <h2>Agenda tu Visita<br/>Hoy Mismo</h2>
+        <p>Nuestros asesores están disponibles para guiarte en tu inversión.</p>
+        <div class="contacto-info">
+          <a href="tel:+51999999999" class="info-item">
+            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            +51 999 999 999
+          </a>
+          <a href="https://wa.me/51999999999" target="_blank" class="info-item">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp
+          </a>
+        </div>
+      </div>
+      <form class="contacto-form reveal-right" id="contacto-form" novalidate>
+        <div class="form-group">
+          <input type="text" id="nombre" placeholder="Tu nombre completo" required />
+          <label for="nombre">Nombre completo</label>
+        </div>
+        <div class="form-group">
+          <input type="tel" id="telefono" placeholder="Tu teléfono" required />
+          <label for="telefono">Teléfono</label>
+        </div>
+        <div class="form-group">
+          <input type="email" id="email" placeholder="Tu email" required />
+          <label for="email">Email</label>
+        </div>
+        <div class="form-group">
+          <select id="tipo" required>
+            <option value="">Tipo de departamento</option>
+            <option value="1">1 Dormitorio</option>
+            <option value="2">2 Dormitorios</option>
+            <option value="3">3 Dormitorios</option>
+          </select>
+          <label for="tipo">Tipo</label>
+        </div>
+        <button type="submit" class="btn btn-primary btn-full">
+          <span>Agendar Visita</span>
+          <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+        </button>
+        <div class="form-success" id="form-success">
+          <span>&#10003;</span> ¡Gracias! Nos contactaremos pronto.
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ─── VENDER ─────────────────────────────────────────── -->
+  <section id="vender" class="section-vender">
+    <div class="vender-inner reveal-up">
+      <p>¿Tienes un inmueble para vender? <strong>¡Te conectamos con compradores!</strong></p>
+      <a href="#contacto" class="btn btn-white">Contáctanos &rsaquo;&rsaquo;</a>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="brand-name footer-logo">GRAND <strong>TERRA</strong></span>
+          <p>Departamentos premium en el corazón de Miraflores, Lima.</p>
+        </div>
+        <div class="footer-links">
+          <h5>Navegación</h5>
+          <ul>
+            <li><a href="#hero">Inicio</a></li>
+            <li><a href="#proyecto">Proyecto</a></li>
+            <li><a href="#ubicacion">Ubicación</a></li>
+            <li><a href="#testimonios">Testimonios</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h5>Contacto</h5>
+          <p>Miraflores, Lima – Perú</p>
+          <p><a href="tel:+51999999999">+51 999 999 999</a></p>
+          <p><a href="mailto:info@grandterra.pe">info@grandterra.pe</a></p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Grand Terra. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ─── WHATSAPP BUTTON ──────────────────────────────── -->
+  <a href="https://wa.me/51999999999" target="_blank" class="whatsapp-btn" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span class="wa-pulse"></span>
+  </a>
+
+  <script src="main.js"></script>
+</body>
+</html>
