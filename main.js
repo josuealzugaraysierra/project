@@ -123,7 +123,7 @@ form.addEventListener('submit', (e) => {
   setTimeout(() => {
     form.reset();
     btn.disabled = false;
-    btn.querySelector('span').textContent = 'Agendar Visita';
+    btn.querySelector('span').textContent = 'Recibir información por WhatsApp';
     formSuccess.classList.add('show');
     setTimeout(() => formSuccess.classList.remove('show'), 4000);
   }, 1200);
@@ -140,6 +140,12 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     window.scrollTo({ top, behavior: 'smooth' });
   });
 });
+
+/* ─── VISOR 360 ─────────────────────────────────────────── */
+function load360() {
+  const c = document.getElementById('viewer360');
+  c.innerHTML = '<iframe src="REEMPLAZAR_CON_URL_360" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>';
+}
 
 /* ─── PARALLAX ON HERO FEATURES BAR ─────────────────────── */
 // Subtle tilt on gallery cards

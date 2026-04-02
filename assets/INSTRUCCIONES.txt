@@ -1,0 +1,27 @@
+IMÁGENES REQUERIDAS — CHACRA Y MAR
+====================================
+
+Reemplaza estos archivos con las fotos reales del proyecto:
+
+HERO (slider de fondo, pantalla completa):
+  hero-1.jpg   — Vista panorámica del terreno / paisaje principal
+  hero-2.jpg   — Acceso o entrada al proyecto
+  hero-3.jpg   — Vista al mar o entorno natural
+
+GALERÍA DEL PROYECTO:
+  terreno-1.jpg  — Lotes desde 120m² (vista de un lote delimitado)
+  terreno-2.jpg  — Acceso por Panamericana Norte
+  terreno-3.jpg  — Entorno natural, campo abierto o vista al mar
+
+VISOR 360:
+  360-preview.jpg  — Captura o thumbnail del recorrido 360°
+
+RECOMENDACIONES:
+  - Formato JPG, calidad 80-85%
+  - Hero: mínimo 1600px de ancho
+  - Galería: mínimo 800px de ancho, proporción 4:3 o 16:9
+  - 360-preview: 1200x600px aprox.
+
+VISOR 360:
+  Una vez tengas la URL del recorrido 360° (Google Street View, Matterport, etc.),
+  búscala en main.js y reemplaza: REEMPLAZAR_CON_URL_360
