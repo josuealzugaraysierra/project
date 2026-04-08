@@ -104,11 +104,19 @@ svg { fill: currentColor; }
 #navbar {
   position: fixed; top: 0; left: 0; right: 0; z-index: 999;
   padding: 20px 0;
-  transition: var(--transition);
+  transition: padding var(--transition), box-shadow var(--transition);
 }
-#navbar.scrolled {
+#navbar::before {
+  content: '';
+  position: absolute; inset: 0; z-index: -1;
+  pointer-events: none;
   background: rgba(13,17,23,.95);
   backdrop-filter: blur(16px);
+  opacity: 0;
+  transition: opacity .35s ease;
+}
+#navbar.scrolled::before { opacity: 1; }
+#navbar.scrolled {
   padding: 12px 0;
   box-shadow: 0 2px 20px rgba(0,0,0,.3);
 }
