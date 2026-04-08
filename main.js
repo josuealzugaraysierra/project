@@ -1,7 +1,7 @@
 /* ─── NAVBAR SCROLL ─────────────────────────────────────── */
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 60);
+  navbar.classList.toggle('scrolled', window.scrollY > 120);
 });
 
 /* ─── BURGER MENU ───────────────────────────────────────── */
