@@ -7,15 +7,27 @@ window.addEventListener('scroll', () => {
 /* ─── BURGER MENU ───────────────────────────────────────── */
 const burger = document.getElementById('burger');
 const navLinks = document.getElementById('nav-links');
+const navBackdrop = document.getElementById('nav-backdrop');
+
+function closeNav() {
+  burger.classList.remove('open');
+  navLinks.classList.remove('open');
+  navBackdrop.classList.remove('open');
+}
+
 burger.addEventListener('click', () => {
-  burger.classList.toggle('open');
-  navLinks.classList.toggle('open');
+  const isOpen = navLinks.classList.contains('open');
+  if (isOpen) {
+    closeNav();
+  } else {
+    burger.classList.add('open');
+    navLinks.classList.add('open');
+    navBackdrop.classList.add('open');
+  }
 });
+navBackdrop.addEventListener('click', closeNav);
 navLinks.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', () => {
-    burger.classList.remove('open');
-    navLinks.classList.remove('open');
-  });
+  a.addEventListener('click', closeNav);
 });
 
 /* ─── HERO SLIDER ───────────────────────────────────────── */
@@ -88,26 +100,6 @@ const statsObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.5 });
 
 statNums.forEach(el => statsObserver.observe(el));
-
-/* ─── TESTIMONIAL SLIDER ─────────────────────────────────── */
-const tSlides = document.querySelectorAll('.testi-slide');
-const tDots = document.querySelectorAll('.t-dot');
-let currentT = 0;
-
-function goToTesti(idx) {
-  tSlides[currentT].classList.remove('active');
-  tDots[currentT].classList.remove('active');
-  currentT = (idx + tSlides.length) % tSlides.length;
-  tSlides[currentT].classList.add('active');
-  tDots[currentT].classList.add('active');
-}
-
-document.getElementById('testi-prev').addEventListener('click', () => goToTesti(currentT - 1));
-document.getElementById('testi-next').addEventListener('click', () => goToTesti(currentT + 1));
-tDots.forEach(d => d.addEventListener('click', () => goToTesti(Number(d.dataset.t))));
-
-// Auto advance testimonials
-setInterval(() => goToTesti(currentT + 1), 6000);
 
 /* ─── CONTACT FORM ───────────────────────────────────────── */
 const form = document.getElementById('contacto-form');

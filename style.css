@@ -519,7 +519,7 @@ cite { color: var(--gold); font-size: .9rem; font-style: normal; font-weight: 60
 /* ─── HERO MICROCOPY ─────────────────────────────────────── */
 .hero-microcopy {
   font-size: .8rem; color: rgba(255,255,255,.65);
-  margin-top: 8px; letter-spacing: .5px;
+  margin-top: 8px; margin-bottom: 16px; letter-spacing: .5px;
 }
 
 /* ─── TRUST GRID ─────────────────────────────────────────── */
@@ -601,6 +601,7 @@ cite { color: var(--gold); font-size: .9rem; font-style: normal; font-weight: 60
 @media (max-width: 768px) {
   .nav-links {
     position: fixed; top: 0; right: -100%; bottom: 0; width: 280px;
+    z-index: 998;
     background: var(--dark); flex-direction: column; justify-content: center;
     padding: 40px; gap: 28px; transition: right .4s ease;
     box-shadow: -4px 0 30px rgba(0,0,0,.4);
@@ -624,6 +625,8 @@ cite { color: var(--gold); font-size: .9rem; font-style: normal; font-weight: 60
   .footer-brand { grid-column: span 1; }
   .vender-inner { flex-direction: column; text-align: center; }
   .hero-actions { flex-direction: column; align-items: center; }
+  .hero-stats { flex-direction: column; gap: 12px; }
+  .stat-divider { width: 40px; height: 1px; }
 
   .section-proyecto,
   .section-ubicacion,
@@ -634,7 +637,28 @@ cite { color: var(--gold); font-size: .9rem; font-style: normal; font-weight: 60
 }
 
 @media (max-width: 480px) {
-  .hero-stats { flex-direction: column; gap: 12px; }
-  .stat-divider { width: 40px; height: 1px; }
   .contacto-form { padding: 28px 20px; }
+}
+
+/* ─── NAV BACKDROP (mobile) ──────────────────────────────── */
+.nav-backdrop {
+  display: none;
+  position: fixed; inset: 0; z-index: 997;
+  background: rgba(0,0,0,.5);
+  backdrop-filter: blur(2px);
+}
+.nav-backdrop.open { display: block; }
+
+/* ─── FLOATING LABELS ────────────────────────────────────── */
+.form-group input:not(:placeholder-shown) ~ label,
+.form-group input:focus ~ label {
+  opacity: 1;
+  top: 6px;
+  font-size: .7rem;
+  color: var(--gold);
+}
+.form-group input:not(:placeholder-shown),
+.form-group input:focus {
+  padding-top: 24px;
+  padding-bottom: 8px;
 }
