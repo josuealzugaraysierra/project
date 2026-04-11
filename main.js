@@ -30,37 +30,6 @@ navLinks.querySelectorAll('a').forEach(a => {
   a.addEventListener('click', closeNav);
 });
 
-/* ─── HERO SLIDER ───────────────────────────────────────── */
-const slides = document.querySelectorAll('.slide');
-const dots = document.querySelectorAll('.dot');
-let currentSlide = 0;
-let sliderInterval;
-
-function goToSlide(idx) {
-  slides[currentSlide].classList.remove('active');
-  dots[currentSlide].classList.remove('active');
-  currentSlide = idx;
-  slides[currentSlide].classList.add('active');
-  dots[currentSlide].classList.add('active');
-}
-
-function nextSlide() {
-  goToSlide((currentSlide + 1) % slides.length);
-}
-
-function startSlider() {
-  sliderInterval = setInterval(nextSlide, 5000);
-}
-
-dots.forEach(dot => {
-  dot.addEventListener('click', () => {
-    clearInterval(sliderInterval);
-    goToSlide(Number(dot.dataset.idx));
-    startSlider();
-  });
-});
-
-startSlider();
 
 /* ─── SCROLL REVEAL ─────────────────────────────────────── */
 const revealEls = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');

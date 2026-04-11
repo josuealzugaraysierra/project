@@ -177,16 +177,30 @@ svg { fill: currentColor; }
   position: absolute; inset: 0; z-index: 1;
   background: linear-gradient(135deg, rgba(13,17,23,.85) 0%, rgba(13,17,23,.45) 60%, rgba(13,17,23,.75) 100%);
 }
-.hero-slider { position: absolute; inset: 0; }
-.slide {
-  position: absolute; inset: 0; background-size: cover; background-position: center;
-  opacity: 0; transition: opacity 1.2s ease, transform 8s ease;
-  transform: scale(1.05);
+/* ─── HERO PANORAMA 360 ──────────────────────────────────── */
+.hero-panorama {
+  position: absolute; inset: 0;
+  overflow: hidden;
 }
-.slide.active { opacity: 1; transform: scale(1); }
-.slide-1 { background-image: url('assets/hero-1.jpg'); }
-.slide-2 { background-image: url('assets/hero-2.jpg'); }
-.slide-3 { background-image: url('assets/hero-3.jpg'); }
+.hero-pano-strip {
+  position: absolute;
+  top: 0; left: 0;
+  height: 100%;
+  /* Two tiles of a 2:1 equirect. image sized to fill viewport height  */
+  /* One tile = 200vh wide × 100vh tall  →  two tiles = 400vh wide     */
+  width: 400vh;
+  background-image: url('assets/360.jpg');
+  background-repeat: repeat-x;
+  background-size: 200vh 100vh;
+  background-position: 0 center;
+  will-change: transform;
+  backface-visibility: hidden;
+  animation: pano-pan 120s linear infinite;
+}
+@keyframes pano-pan {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); } /* exactly one tile = –200vh  */
+}
 
 .hero-content {
   position: relative; z-index: 2;
@@ -253,15 +267,6 @@ svg { fill: currentColor; }
   100% { transform: scaleY(0); transform-origin: bottom; }
 }
 
-.slider-dots {
-  position: absolute; bottom: 32px; right: 40px; z-index: 2;
-  display: flex; gap: 8px;
-}
-.dot {
-  width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,.4);
-  border: none; cursor: pointer; transition: var(--transition); padding: 0;
-}
-.dot.active { width: 28px; border-radius: 4px; background: var(--gold); }
 
 /* ─── FEATURES BAR ───────────────────────────────────────── */
 .features-bar {
@@ -633,7 +638,7 @@ cite { color: var(--gold); font-size: .9rem; font-style: normal; font-weight: 60
   .stat-num { font-size: 1.8rem; }
   .stat-divider { width: 40px; height: 1px; }
   .hero-scroll-indicator { display: none; }
-  .slider-dots { display: none; }
+  .hero-pano-strip { animation-duration: 180s; } /* more gradual on mobile */
   .hero-actions { flex-direction: column; align-items: center; }
 
   .features-inner { grid-template-columns: 1fr; }
