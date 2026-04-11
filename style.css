@@ -186,12 +186,12 @@ svg { fill: currentColor; }
   position: absolute;
   top: 0; left: 0;
   height: 100%;
-  /* Two tiles of a 2:1 equirect. image sized to fill viewport height  */
-  /* One tile = 200vh wide × 100vh tall  →  two tiles = 400vh wide     */
-  width: 400vh;
+  /* 3 tiles of a 2:1 equirect. image each sized 200vh wide × full height */
+  /* 3 tiles ensures no gap even when viewport-width > 200vh               */
+  width: 600vh;
   background-image: url('assets/360.webp');
   background-repeat: repeat-x;
-  background-size: 200vh 100vh;
+  background-size: 200vh 100%;
   background-position: 0 center;
   will-change: transform;
   backface-visibility: hidden;
@@ -199,7 +199,10 @@ svg { fill: currentColor; }
 }
 @keyframes pano-pan {
   from { transform: translateX(0); }
-  to   { transform: translateX(-50%); } /* exactly one tile = –200vh  */
+  to   { transform: translateX(-200vh); } /* exactly one tile, seamless loop */
+}
+@media (max-width: 768px) {
+  .hero-pano-strip { animation-duration: 180s; }
 }
 
 .hero-content {
@@ -638,7 +641,6 @@ cite { color: var(--gold); font-size: .9rem; font-style: normal; font-weight: 60
   .stat-num { font-size: 1.8rem; }
   .stat-divider { width: 40px; height: 1px; }
   .hero-scroll-indicator { display: none; }
-  .hero-pano-strip { animation-duration: 180s; } /* more gradual on mobile */
   .hero-actions { flex-direction: column; align-items: center; }
 
   .features-inner { grid-template-columns: 1fr; }
