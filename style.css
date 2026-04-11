@@ -189,7 +189,7 @@ svg { fill: currentColor; }
   /* Two tiles of a 2:1 equirect. image sized to fill viewport height  */
   /* One tile = 200vh wide × 100vh tall  →  two tiles = 400vh wide     */
   width: 400vh;
-  background-image: url('assets/360.jpg');
+  background-image: url('assets/360.webp');
   background-repeat: repeat-x;
   background-size: 200vh 100vh;
   background-position: 0 center;
