@@ -44,31 +44,40 @@ const revealObserver = new IntersectionObserver((entries) => {
 revealEls.forEach(el => revealObserver.observe(el));
 
 /* ─── COUNTER ANIMATION ─────────────────────────────────── */
-function animateCounter(el, target, duration = 1800) {
-  let start = 0;
+function animateCounter(el, target, duration = 1600) {
+  el.textContent = '0';
+  let startTs = null;
   const step = (timestamp) => {
-    if (!start) start = timestamp;
-    const progress = Math.min((timestamp - start) / duration, 1);
+    if (!startTs) startTs = timestamp;
+    const progress = Math.min((timestamp - startTs) / duration, 1);
     const eased = 1 - Math.pow(1 - progress, 3);
     el.textContent = Math.floor(eased * target);
-    if (progress < 1) requestAnimationFrame(step);
-    else el.textContent = target;
+    if (progress < 1) {
+      requestAnimationFrame(step);
+    } else {
+      el.textContent = target;
+      el.classList.add('stat-pop');
+      el.addEventListener('animationend', () => el.classList.remove('stat-pop'), { once: true });
+    }
   };
   requestAnimationFrame(step);
 }
 
-const statNums = document.querySelectorAll('.stat-num[data-target]');
+const statsContainer = document.querySelector('.hero-stats');
 const statsObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      const el = entry.target;
-      animateCounter(el, Number(el.dataset.target));
-      statsObserver.unobserve(el);
+      statsObserver.disconnect();
+      const statNums = entry.target.querySelectorAll('.stat-num[data-target]');
+      statNums.forEach(el => {
+        const order = Number(el.dataset.order || 0);
+        setTimeout(() => animateCounter(el, Number(el.dataset.target)), order * 1000);
+      });
     }
   });
-}, { threshold: 0.5 });
+}, { threshold: 0.4 });
 
-statNums.forEach(el => statsObserver.observe(el));
+if (statsContainer) statsObserver.observe(statsContainer);
 
 /* ─── CONTACT FORM ───────────────────────────────────────── */
 const form = document.getElementById('contacto-form');
