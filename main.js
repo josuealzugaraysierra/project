@@ -50,7 +50,7 @@ function runProportionalCounters(container) {
 
   // Each number's duration is proportional to its value.
   // The largest value gets MAX_DURATION; smaller values finish earlier.
-  const MAX_DURATION = 2000; // ms
+  const MAX_DURATION = 4000; // ms
   const maxTarget    = Math.max(...targets);
   const durations    = targets.map(t => (t / maxTarget) * MAX_DURATION);
   const done         = els.map(() => false);
