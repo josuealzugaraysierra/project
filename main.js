@@ -43,36 +43,71 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 revealEls.forEach(el => revealObserver.observe(el));
 
-/* ─── COUNTER ANIMATION ─────────────────────────────────── */
-function animateCounter(el, target, duration = 1600) {
-  el.textContent = '0';
-  let startTs = null;
-  const step = (timestamp) => {
-    if (!startTs) startTs = timestamp;
-    const progress = Math.min((timestamp - startTs) / duration, 1);
-    const eased = 1 - Math.pow(1 - progress, 3);
-    el.textContent = Math.floor(eased * target);
-    if (progress < 1) {
-      requestAnimationFrame(step);
-    } else {
-      el.textContent = target;
-      el.classList.add('stat-pop');
-      el.addEventListener('animationend', () => el.classList.remove('stat-pop'), { once: true });
-    }
-  };
-  requestAnimationFrame(step);
+/* ─── COUNTER ANIMATION — scramble + sequential resolve ─── */
+function runScrambleCounters(container) {
+  const els      = [...container.querySelectorAll('.stat-num[data-target]')];
+  const targets  = els.map(el => Number(el.dataset.target));
+  const orders   = els.map(el => Number(el.dataset.order || 0));
+
+  // Timing constants (total ≈ 1.9 s)
+  const SCRAMBLE_BASE    = 800;  // ms until first element resolves
+  const RESOLVE_GAP      = 400;  // ms between each resolution
+  const SETTLE_WINDOW    = 250;  // ms before resolve where values converge
+  const SCRAMBLE_TICK    = 55;   // ms between random-number refreshes
+
+  const resolveTimes = orders.map(o => SCRAMBLE_BASE + o * RESOLVE_GAP);
+  const resolved     = els.map(() => false);
+
+  els.forEach(el => { el.textContent = '0'; });
+
+  let startTime  = null;
+  let lastTick   = 0;
+
+  function frame(ts) {
+    if (!startTime) startTime = ts;
+    const elapsed   = ts - startTime;
+    const doTick    = (elapsed - lastTick) >= SCRAMBLE_TICK;
+    if (doTick) lastTick = elapsed;
+
+    els.forEach((el, i) => {
+      if (resolved[i]) return;
+
+      if (elapsed >= resolveTimes[i]) {
+        resolved[i] = true;
+        el.textContent = targets[i];
+        el.classList.add('stat-pop');
+        el.addEventListener('animationend', () => el.classList.remove('stat-pop'), { once: true });
+        return;
+      }
+
+      if (!doTick) return;
+
+      const remaining = resolveTimes[i] - elapsed;
+      if (remaining <= SETTLE_WINDOW) {
+        // Converging phase: noise shrinks, centre approaches target
+        const t         = 1 - remaining / SETTLE_WINDOW;          // 0 → 1
+        const noise     = targets[i] * (1 - t) * 0.35;
+        const centre    = targets[i] * (0.55 + t * 0.45);
+        const raw       = centre + (Math.random() - 0.5) * 2 * noise;
+        el.textContent  = Math.round(Math.max(0, Math.min(raw, targets[i])));
+      } else {
+        // Pure scramble: random in ±40 % around target
+        el.textContent  = Math.floor(targets[i] * 0.6 + Math.random() * targets[i] * 0.8);
+      }
+    });
+
+    if (resolved.some(r => !r)) requestAnimationFrame(frame);
+  }
+
+  requestAnimationFrame(frame);
 }
 
 const statsContainer = document.querySelector('.hero-stats');
-const statsObserver = new IntersectionObserver((entries) => {
+const statsObserver  = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       statsObserver.disconnect();
-      const statNums = entry.target.querySelectorAll('.stat-num[data-target]');
-      statNums.forEach(el => {
-        const order = Number(el.dataset.order || 0);
-        setTimeout(() => animateCounter(el, Number(el.dataset.target)), order * 1000);
-      });
+      runScrambleCounters(entry.target);
     }
   });
 }, { threshold: 0.4 });
