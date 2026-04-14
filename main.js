@@ -134,9 +134,23 @@ let _viewer = null;
 document.addEventListener('DOMContentLoaded', () => {
   const panoBg = document.getElementById('pano-bg');
 
+  // Pick panorama resolution based on the device's WebGL max texture size.
+  // Original: 12000×6000 — too large for mobile GPUs (cap 4096–8192 px).
+  // Mobile version: 4096×2048 — fits within the 4096 limit on most phones.
+  function getPanoSrc() {
+    try {
+      const canvas = document.createElement('canvas');
+      const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+      const maxTex = gl ? gl.getParameter(gl.MAX_TEXTURE_SIZE) : 0;
+      return maxTex >= 12000 ? 'assets/360.webp' : 'assets/360-mobile.webp';
+    } catch (e) {
+      return 'assets/360-mobile.webp';
+    }
+  }
+
   _viewer = pannellum.viewer('pano-inner', {
     type:                       'equirectangular',
-    panorama:                   'assets/360.webp',
+    panorama:                   getPanoSrc(),
     hfov:                       110,
     pitch:                      -20,
     yaw:                        0,
