@@ -22,7 +22,7 @@ html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; }
 
 body {
   font-family: 'Montserrat', sans-serif;
-  background: #000005;
+  background: var(--white);
   color: var(--dark);
   line-height: 1.6;
   overflow-x: hidden;
@@ -166,42 +166,45 @@ svg { fill: currentColor; }
 }
 .burger span { display: block; width: 24px; height: 2px; background: var(--white); transition: var(--transition); }
 
-/* ─── 360 PANORAMA BACKGROUND (PANNELLUM) ────────────────── */
+/* ─── HERO ───────────────────────────────────────────────── */
+#hero {
+  position: relative; height: 100vh; min-height: 700px;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; color: var(--white);
+}
+
+/* ─── 360 PANORAMA LAYERS (inside #hero) ─────────────────── */
+/* position:absolute avoids the iOS Safari bug where
+   position:fixed + z-index:<0 is silently dropped from compositing */
 #pano-bg {
-  position: fixed; top: 0; left: 0;
-  width: 100%; height: 100%;
-  z-index: -2;
+  position: absolute; inset: 0;
+  z-index: 0;
   background: #000005;
   opacity: 0;
   transition: opacity 1.2s ease;
 }
 #pano-bg.loaded { opacity: 1; }
 
-/* Pannellum renders into this inner div; its CSS forces position:relative
-   on the target element, so we keep the fixed shell separate */
+/* Pannellum forces position:relative on its target via pnlm-container CSS,
+   so we render into a full-size inner div and keep the shell for fade-in */
 #pano-inner { width: 100%; height: 100%; }
 
 #pano-overlay {
-  position: fixed; top: 0; left: 0;
-  width: 100%; height: 100%;
-  z-index: -1;
+  position: absolute; inset: 0;
+  z-index: 1;
   background: rgba(0,0,0,.35);
   transition: background .5s ease;
   pointer-events: none;
 }
 
-/* Hide all Pannellum built-in UI elements */
+/* Hero content must sit above the panorama layers */
+.hero-scroll-indicator { z-index: 2; }
+
+/* Hide all Pannellum built-in UI */
 .pnlm-controls-container,
 .pnlm-load-button,
 .pnlm-lbar,
 .pnlm-about-msg { display: none !important; }
-
-/* ─── HERO ───────────────────────────────────────────────── */
-#hero {
-  position: relative; height: 100vh; min-height: 700px;
-  display: flex; align-items: center; justify-content: center;
-  color: var(--white);
-}
 
 .hero-content {
   position: relative; z-index: 2;

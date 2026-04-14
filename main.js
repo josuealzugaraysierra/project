@@ -150,7 +150,8 @@ document.addEventListener('DOMContentLoaded', () => {
     compass:                    false,
   });
 
-  _viewer.on('load', () => panoBg.classList.add('loaded'));
+  _viewer.on('load',  () => panoBg.classList.add('loaded'));
+  _viewer.on('error', () => panoBg.classList.add('loaded')); // show dark bg on WebGL failure
 });
 
 /* — Overlay API ─────────────────────────────────────────── */
