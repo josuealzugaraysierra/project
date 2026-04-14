@@ -177,6 +177,10 @@ svg { fill: currentColor; }
 }
 #pano-bg.loaded { opacity: 1; }
 
+/* Pannellum renders into this inner div; its CSS forces position:relative
+   on the target element, so we keep the fixed shell separate */
+#pano-inner { width: 100%; height: 100%; }
+
 #pano-overlay {
   position: fixed; top: 0; left: 0;
   width: 100%; height: 100%;

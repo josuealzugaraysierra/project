@@ -134,7 +134,7 @@ let _viewer = null;
 document.addEventListener('DOMContentLoaded', () => {
   const panoBg = document.getElementById('pano-bg');
 
-  _viewer = pannellum.viewer('pano-bg', {
+  _viewer = pannellum.viewer('pano-inner', {
     type:                       'equirectangular',
     panorama:                   'assets/360.webp',
     hfov:                       110,
