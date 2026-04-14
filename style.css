@@ -166,45 +166,45 @@ svg { fill: currentColor; }
 }
 .burger span { display: block; width: 24px; height: 2px; background: var(--white); transition: var(--transition); }
 
-/* ─── HERO ───────────────────────────────────────────────── */
-#hero {
-  position: relative; height: 100vh; min-height: 700px;
-  display: flex; align-items: center; justify-content: center;
-  overflow: hidden; color: var(--white);
-}
-
-/* ─── 360 PANORAMA LAYERS (inside #hero) ─────────────────── */
-/* position:absolute avoids the iOS Safari bug where
-   position:fixed + z-index:<0 is silently dropped from compositing */
+/* ─── 360 PANORAMA LAYERS (fixed, behind entire page) ────── */
+/* #pano-bg and #pano-overlay sit at z-index:-2/-1 so every section's
+   own background covers them as the user scrolls — parallax-like effect.
+   #pano-inner is the actual Pannellum target; keeping it separate prevents
+   Pannellum's pnlm-container CSS (position:relative) from overriding the
+   fixed positioning of the outer shell. */
 #pano-bg {
-  position: absolute; inset: 0;
-  z-index: 0;
+  position: fixed; top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: -2;
   background: #000005;
   opacity: 0;
   transition: opacity 1.2s ease;
 }
 #pano-bg.loaded { opacity: 1; }
 
-/* Pannellum forces position:relative on its target via pnlm-container CSS,
-   so we render into a full-size inner div and keep the shell for fade-in */
 #pano-inner { width: 100%; height: 100%; }
 
 #pano-overlay {
-  position: absolute; inset: 0;
-  z-index: 1;
+  position: fixed; top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: -1;
   background: rgba(0,0,0,.35);
   transition: background .5s ease;
   pointer-events: none;
 }
-
-/* Hero content must sit above the panorama layers */
-.hero-scroll-indicator { z-index: 2; }
 
 /* Hide all Pannellum built-in UI */
 .pnlm-controls-container,
 .pnlm-load-button,
 .pnlm-lbar,
 .pnlm-about-msg { display: none !important; }
+
+/* ─── HERO ───────────────────────────────────────────────── */
+#hero {
+  position: relative; height: 100vh; min-height: 700px;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; color: var(--white);
+}
 
 .hero-content {
   position: relative; z-index: 2;

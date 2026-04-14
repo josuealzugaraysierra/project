@@ -12,6 +12,10 @@
 </head>
 <body>
 
+  <!-- ─── 360 PANORAMA BACKGROUND (fixed, behind everything) ── -->
+  <div id="pano-bg"><div id="pano-inner"></div></div>
+  <div id="pano-overlay"></div>
+
   <!-- ─── NAV ─────────────────────────────────────────── -->
   <nav id="navbar">
     <div class="nav-inner">
@@ -35,9 +39,6 @@
 
   <!-- ─── HERO ─────────────────────────────────────────── -->
   <section id="hero">
-    <!-- 360 panorama layers — absolute inside hero avoids iOS fixed+z-index:-n bug -->
-    <div id="pano-bg"><div id="pano-inner"></div></div>
-    <div id="pano-overlay"></div>
     <div class="hero-content">
       <div class="hero-badge reveal-up">Terrenos en Norte Chico · Lima</div>
       <h1 class="hero-title reveal-up delay-1">
