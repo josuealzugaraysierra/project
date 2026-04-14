@@ -128,11 +128,81 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-/* ─── VISOR 360 ─────────────────────────────────────────── */
-function load360() {
-  const c = document.getElementById('viewer360');
-  c.innerHTML = '<iframe src="REEMPLAZAR_CON_URL_360" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>';
+/* ─── 360 PANORAMA (PANNELLUM) ──────────────────────────── */
+let _viewer = null;
+
+document.addEventListener('DOMContentLoaded', () => {
+  const panoBg = document.getElementById('pano-bg');
+
+  _viewer = pannellum.viewer('pano-bg', {
+    type:                       'equirectangular',
+    panorama:                   'assets/360.webp',
+    hfov:                       110,
+    pitch:                      -20,
+    yaw:                        0,
+    autoLoad:                   true,
+    autoRotate:                 -2,
+    autoRotateInactivityDelay:  0,
+    draggable:                  false,
+    mouseZoom:                  false,
+    disableKeyboardCtrl:        true,
+    showControls:               false,
+    compass:                    false,
+  });
+
+  _viewer.on('load', () => panoBg.classList.add('loaded'));
+});
+
+/* — Overlay API ─────────────────────────────────────────── */
+const _panoOverlay = document.getElementById('pano-overlay');
+function setOverlayOpacity(value) {
+  const v = Math.min(0.7, Math.max(0, value));
+  _panoOverlay.style.background = `rgba(0,0,0,${v})`;
 }
+
+/* — Motion control hooks ────────────────────────────────── */
+function _smoothSet(getter, setter, target, duration) {
+  if (!_viewer) return;
+  if (!duration) { setter(target); return; }
+  const start = getter();
+  let diff = target - start;
+  // Normalise yaw diff to shortest arc (-180..180)
+  if (setter === _viewer.setYaw.bind(_viewer)) {
+    while (diff >  180) diff -= 360;
+    while (diff < -180) diff += 360;
+  }
+  const t0 = performance.now();
+  function tick(ts) {
+    const p = Math.min((ts - t0) / duration, 1);
+    setter(start + diff * (1 - Math.pow(1 - p, 3)));
+    if (p < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
+function setYaw(yaw, duration = 1000) {
+  _smoothSet(() => _viewer.getYaw(), _viewer.setYaw.bind(_viewer), yaw, duration);
+}
+function setPitch(pitch, duration = 1000) {
+  _smoothSet(() => _viewer.getPitch(), _viewer.setPitch.bind(_viewer), pitch, duration);
+}
+function pauseAutoRotate()          { if (_viewer) _viewer.setAutoRotate(0); }
+function resumeAutoRotate(speed=-2) { if (_viewer) _viewer.setAutoRotate(speed); }
+
+/* — Scene points & view-change observer ─────────────────── */
+const SCENE_POINTS = [
+  { yaw:  30, pitch: -10, id: 'point-1' },
+  { yaw: -60, pitch: -15, id: 'point-2' },
+];
+
+const _vcCallbacks = [];
+function onViewChange(callback) { _vcCallbacks.push(callback); }
+
+setInterval(() => {
+  if (!_viewer) return;
+  const state = { yaw: _viewer.getYaw(), pitch: _viewer.getPitch() };
+  _vcCallbacks.forEach(cb => cb(state));
+}, 200);
 
 /* ─── PARALLAX ON HERO FEATURES BAR ─────────────────────── */
 // Subtle tilt on gallery cards
