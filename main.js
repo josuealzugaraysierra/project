@@ -232,3 +232,57 @@ document.querySelectorAll('.gallery-card').forEach(card => {
     card.style.transform = '';
   });
 });
+
+/* ─── INLINE 360 VIEWER (section #proyecto) ─────────────── */
+// Called by the play button: onclick="load360()"
+// Replaces the preview image + button with an embedded Pannellum viewer
+// inside the inline .viewer-360 container.
+function load360() {
+  const wrap = document.getElementById('viewer360');
+  if (!wrap) return;
+
+  // Remove the static preview elements
+  const preview = wrap.querySelector('.viewer-preview');
+  const playBtn = wrap.querySelector('.viewer-play');
+  if (preview) preview.remove();
+  if (playBtn) playBtn.remove();
+
+  // Create a dedicated target div for the inline Pannellum instance
+  const target = document.createElement('div');
+  target.id = 'viewer360-pnlm';
+  target.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;';
+  wrap.appendChild(target);
+
+  // Pick resolution based on GPU capability (same logic as background pano)
+  function getSrc() {
+    try {
+      const canvas = document.createElement('canvas');
+      const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+      const maxTex = gl ? gl.getParameter(gl.MAX_TEXTURE_SIZE) : 0;
+      return maxTex >= 12000 ? 'assets/360.webp' : 'assets/360-mobile.webp';
+    } catch (e) {
+      return 'assets/360-mobile.webp';
+    }
+  }
+
+  if (typeof pannellum !== 'undefined') {
+    pannellum.viewer('viewer360-pnlm', {
+      type:           'equirectangular',
+      panorama:       getSrc(),
+      hfov:           100,
+      pitch:          -10,
+      yaw:            0,
+      autoLoad:       true,
+      autoRotate:     -1.5,
+      autoRotateInactivityDelay: 3000,
+      showControls:   true,
+      compass:        false,
+      keyboardZoom:   false,
+    });
+  } else {
+    // Fallback: show panorama as a scrollable background image
+    wrap.style.backgroundImage = `url('${getSrc()}')`;
+    wrap.style.backgroundSize  = 'cover';
+    wrap.style.backgroundPosition = 'center';
+  }
+}

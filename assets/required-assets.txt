@@ -1,0 +1,84 @@
+ARCHIVOS REQUERIDOS — CHACRA Y MAR
+====================================
+Reemplaza los siguientes archivos con los recursos reales del proyecto.
+Todos deben colocarse dentro de la carpeta  assets/
+
+──────────────────────────────────────────────────────────────────────
+PANORAMA 360 (ya incluidos — sólo reemplazar si mejoraras calidad)
+──────────────────────────────────────────────────────────────────────
+  360.webp          — Panorama equirectangular full-res  (≥8000×4000 px)
+                      Se carga en escritorio/GPU de alta gama.
+  360-mobile.webp   — Versión reducida  (4096×2048 px máx.)
+                      Se carga automáticamente en móviles con GPU limitada.
+
+──────────────────────────────────────────────────────────────────────
+GALERÍA DEL PROYECTO  (sección #proyecto)
+──────────────────────────────────────────────────────────────────────
+  terreno-1.jpg   — Lotes desde 120 m²  (vista de un lote delimitado)
+                    Mínimo: 800×600 px · Proporción recomendada: 4:3
+  terreno-2.jpg   — Acceso por Panamericana Norte
+                    Mínimo: 800×600 px · Proporción recomendada: 4:3
+  terreno-3.jpg   — Entorno natural, campo abierto o vista al mar
+                    Mínimo: 800×600 px · Proporción recomendada: 4:3
+
+──────────────────────────────────────────────────────────────────────
+VISOR 360 — PREVIEW  (sección #proyecto · visor embebido)
+──────────────────────────────────────────────────────────────────────
+  360-preview.jpg — Captura/thumbnail que se muestra antes de iniciar
+                    el recorrido 360°.
+                    Tamaño ideal: 1200×600 px · Formato: JPG 80-85 %
+
+──────────────────────────────────────────────────────────────────────
+LOGOS DE RESPALDO  (ya incluidos como SVG vectoriales)
+──────────────────────────────────────────────────────────────────────
+  logo-grand-terra.svg  — Logotipo de la inmobiliaria / promotora
+  logo-ibl.svg          — Logotipo del socio legal / financiero IBL
+  Nota: reemplaza con los archivos SVG o PNG oficiales si los tienes.
+  Para PNG añade el atributo  width="220"  en la etiqueta <img>.
+
+──────────────────────────────────────────────────────────────────────
+RECOMENDACIONES GENERALES
+──────────────────────────────────────────────────────────────────────
+  • Formato imágenes   : JPG (fotos) · WebP (panoramas) · SVG (logos)
+  • Calidad JPG        : 80-85 % (buen balance calidad/peso)
+  • Nombres de archivo : minúsculas, sin espacios, sin tildes
+  • Optimización       : Usa TinyPNG / Squoosh / cwebp antes de subir
+  • Hero               : mínimo 1600 px de ancho para que no se pixele
+  • Galería            : mínimo 800 px de ancho; proporción 4:3 ó 16:9
+  • 360-preview        : aprox. 1200×600 px
+
+──────────────────────────────────────────────────────────────────────
+ICONO DEL SITIO (favicon)  [opcional pero recomendado]
+──────────────────────────────────────────────────────────────────────
+  favicon.ico      — 32×32 px  (para navegadores clásicos)
+  favicon-192.png  — 192×192 px (Android / PWA)
+  favicon-512.png  — 512×512 px (Splash screen PWA)
+  apple-touch-icon.png — 180×180 px (iOS)
+
+  Una vez creados, añade en el <head> de index.html:
+    <link rel="icon" href="assets/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+    <link rel="manifest" href="manifest.json">
+
+──────────────────────────────────────────────────────────────────────
+RECORRIDO 360° EMBEBIDO  (sección #proyecto · botón "Ver recorrido")
+──────────────────────────────────────────────────────────────────────
+  El archivo main.js carga los panoramas  assets/360.webp  /
+  assets/360-mobile.webp  directamente con Pannellum.
+  Si en su lugar prefieres un iframe (Google Street View, Matterport,
+  etc.) busca en main.js la función  load360()  y sustituye la URL.
+
+──────────────────────────────────────────────────────────────────────
+ESTADO ACTUAL  (al 21-04-2026)
+──────────────────────────────────────────────────────────────────────
+  [OK]  index.html          — Página principal completa
+  [OK]  style.css           — Estilos completos (responsive)
+  [OK]  main.js             — JavaScript completo (Pannellum, formulario, animaciones)
+  [OK]  assets/360.webp     — Panorama desktop (incluido)
+  [OK]  assets/360-mobile.webp — Panorama mobile (incluido)
+  [OK]  assets/logo-grand-terra.svg — Logo Grand Terra (SVG placeholder)
+  [OK]  assets/logo-ibl.svg         — Logo IBL (SVG placeholder)
+  [--]  assets/terreno-1.jpg    — PENDIENTE: foto real del proyecto
+  [--]  assets/terreno-2.jpg    — PENDIENTE: foto real del proyecto
+  [--]  assets/terreno-3.jpg    — PENDIENTE: foto real del proyecto
+  [--]  assets/360-preview.jpg  — PENDIENTE: thumbnail del visor 360

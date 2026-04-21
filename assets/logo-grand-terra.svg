@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 64" role="img" aria-label="Grand Terra">
+  <title>Grand Terra</title>
+  <!-- Icon mark: stylised land/terrain diamond -->
+  <g transform="translate(0,4)">
+    <!-- Diamond base shape -->
+    <polygon points="28,4 52,22 28,52 4,22" fill="#E6B12B"/>
+    <!-- Inner terrain lines -->
+    <polyline points="10,26 20,18 28,24 36,14 46,26" fill="none" stroke="#0D1117" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Horizon line -->
+    <line x1="8" y1="32" x2="48" y2="32" stroke="#0D1117" stroke-width="1.4" opacity="0.55"/>
+  </g>
+  <!-- Wordmark -->
+  <text x="62" y="28" font-family="'Montserrat', Arial, sans-serif" font-weight="900" font-size="17" letter-spacing="2.5" fill="#0D1117">GRAND</text>
+  <text x="62" y="48" font-family="'Montserrat', Arial, sans-serif" font-weight="300" font-size="17" letter-spacing="5.5" fill="#E6B12B">TERRA</text>
+  <!-- Divider rule -->
+  <line x1="62" y1="33" x2="212" y2="33" stroke="#E6B12B" stroke-width="1" opacity="0.4"/>
+</svg>

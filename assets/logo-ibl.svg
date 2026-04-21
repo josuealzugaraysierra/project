@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 64" role="img" aria-label="IBL – Inversiones y Bienes Legales">
+  <title>IBL</title>
+  <!-- Shield / crest mark -->
+  <g transform="translate(4,4)">
+    <!-- Shield outline -->
+    <path d="M24 2 L44 10 L44 30 Q44 46 24 56 Q4 46 4 30 L4 10 Z" fill="#0D1117" stroke="#E6B12B" stroke-width="2"/>
+    <!-- Inner shield highlight -->
+    <path d="M24 8 L38 14 L38 30 Q38 42 24 50 Q10 42 10 30 L10 14 Z" fill="none" stroke="rgba(230,177,43,0.25)" stroke-width="1"/>
+    <!-- Monogram "IBL" inside shield -->
+    <text x="24" y="35" font-family="'Montserrat', Arial, sans-serif" font-weight="900" font-size="13" letter-spacing="0.5" fill="#E6B12B" text-anchor="middle">IBL</text>
+  </g>
+  <!-- Wordmark -->
+  <text x="62" y="24" font-family="'Montserrat', Arial, sans-serif" font-weight="900" font-size="16" letter-spacing="3" fill="#0D1117">IBL</text>
+  <text x="62" y="42" font-family="'Montserrat', Arial, sans-serif" font-weight="400" font-size="8.5" letter-spacing="1.2" fill="#5A6270">INVERSIONES</text>
+  <text x="62" y="53" font-family="'Montserrat', Arial, sans-serif" font-weight="400" font-size="8.5" letter-spacing="1.2" fill="#5A6270">BIENES &amp; LEGAL</text>
+  <!-- Gold accent bar -->
+  <rect x="62" y="27" width="110" height="2" rx="1" fill="#E6B12B" opacity="0.5"/>
+</svg>
